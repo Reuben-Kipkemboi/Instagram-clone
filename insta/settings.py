@@ -20,7 +20,7 @@ cloudinary.config(
   api_key = "127562842443717", 
   api_secret = "zxr3TbjmRS2ZvPW9XT-sApQDEtA" 
 )
-
+SECRET_KEY='django-insecure-z9rb+^=$jqz37zmui=zfvoqws6)*d(zi*vvw5$(=**&0c4^nmx'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
