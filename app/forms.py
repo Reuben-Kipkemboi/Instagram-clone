@@ -6,8 +6,7 @@ from . models import Instagram_post ,User_comment
 class RegisterForm(UserCreationForm):
     class Meta:
         model=User
-        fields = [
-            
+        fields = [ 
             'email',
             'username',
             'password1',

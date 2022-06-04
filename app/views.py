@@ -3,27 +3,56 @@ from . forms import NewPostForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
 def app_home(request):
-    return render(request, 'index.html')
+    form=NewPostForm
+    return render(request, 'index.html', {'form':form,})
 
+#Register function
 def register(request):
-    form = RegisterForm()
-    
-    if request.method =="POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, "account created for" + user )
-            return redirect('login')
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        form = RegisterForm()
         
-    return render(request, 'register.html', {'form':form, 'messages':messages})
+        if request.method =="POST":
+            form = RegisterForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, "account created for" + user )
+                return redirect('login')
+            
+        return render(request, 'register.html', {'form':form, 'messages':messages})
+    
+#login function
 
-def login(request):
-    return render(request, 'login.html')
+def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        
+        if request.method =="POST":
+            username= request.POST.get('username')
+            password = request.POST.get('password')
+            
+            user = authenticate(request, username=username, password = password)
+            
+            if user is not None:
+                login(request, user)
+                print('login was succesful and welcome to insta')
+                return redirect('home')
+            else:
+                messages.info(request, "invalid credentials")
+        return render(request, 'login.html', {'messages':messages})
+
+#logout function
+def user_logout(request):
+	logout(request)
+	return redirect('login')
 
 def new_post(request):
     current_user = request.user
