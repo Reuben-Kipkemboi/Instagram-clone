@@ -33,24 +33,38 @@ body{
     color: #303030;
 
 }
-#login-btn{
+#login-btn, #register-btn{
     background-color:#b2dffc ;
     width: 80%;
     display: block;
     margin: 0 auto;
     color: #fff;
     font-weight: 700;
+    margin-bottom: 3%;
 }
-#login-page{
+#login-page, #register-page{
     background-color: #fafafa;
 }
-#login-form{
+#login-form, form{
     border: 1px solid grey;
 }
-#register-redirect{
+#register-redirect, #login-redirect{
     height: 10vh;
     width: 100%;
     border: 1px solid grey;
     background-color: #fff;
     padding: 4%;
+}
+#form .desc{
+    font-weight: bold;
+    color: #303030;
+    font-size: 2.5vh;
+}
+#facebook{
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    color: #fff;
+    font-weight: bold;
+
 }
