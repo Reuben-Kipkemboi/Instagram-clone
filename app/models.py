@@ -12,8 +12,8 @@ class Profile(models.Model):
     image = CloudinaryField('profile_pic')
     date_joined= models.DateField(auto_now_add=True)
     
-    # def __str__(self):
-    #     return self.user
+    def __str__(self):
+        return self.user.username
     
 
 class Instagram_post(models.Model):

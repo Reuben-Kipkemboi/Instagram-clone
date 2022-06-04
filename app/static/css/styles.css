@@ -71,3 +71,6 @@ body{
 #exampleModalLabel{
     text-align: center;
 }
+#card-title{
+    border-bottom: 2px solid #b2dffc;
+}

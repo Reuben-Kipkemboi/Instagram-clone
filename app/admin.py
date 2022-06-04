@@ -5,4 +5,4 @@ from .models import Profile, Instagram_post, User_comment, User_likes
 admin.site.register(Profile),
 admin.site.register(Instagram_post),
 admin.site.register(User_likes),
-admin.site.register(User_comment)
+admin.site.register(User_comment),

@@ -34,7 +34,6 @@ def user_login(request):
     if request.user.is_authenticated:
         return redirect('home')
     else:
-        
         if request.method =="POST":
             username= request.POST.get('username')
             password = request.POST.get('password')
@@ -67,4 +66,13 @@ def new_post(request):
     else:
         form =  NewPostForm()
     return render(request, 'post.html', {"form": form})
+
+# we will use signals to try and create profiles automatically when a user is created:
+# Basic components of signals:
+#---Sender: is usually a model that notifies the receiver when an event occurs.
+#----Receiver: The receiver is usually a function that works on the data once it is notified of some action that has taken place for instance when a user instance is just about to be saved inside the database.
+#----The connection between the senders and the receivers is done through “signal dispatchers”.
+
+def user_profile(request):
+    return render (request, 'profile.html')
     
