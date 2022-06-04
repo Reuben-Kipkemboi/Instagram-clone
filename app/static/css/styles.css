@@ -24,3 +24,25 @@
 body{
     background-color: #fafafa;
 }
+#login-heading{
+    font-family: 'Cookie', cursive;
+    padding:4%;
+    text-align: center;
+    font-size: 7vh;
+    font-weight: 900;
+    color: #303030;
+
+}
+#login-btn{
+    background-color:#b2dffc ;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    font-weight: 700;
+}
+#login-page{
+    background-color: #fafafa;
+}
+
+/*  */
