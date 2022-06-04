@@ -44,5 +44,13 @@ body{
 #login-page{
     background-color: #fafafa;
 }
-
-/*  */
+#login-form{
+    border: 1px solid grey;
+}
+#register-redirect{
+    height: 10vh;
+    width: 100%;
+    border: 1px solid grey;
+    background-color: #fff;
+    padding: 4%;
+}
