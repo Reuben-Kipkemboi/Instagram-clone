@@ -1,4 +1,5 @@
 #imports
+from email.mime import image
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
@@ -9,7 +10,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=False)
     image = CloudinaryField('profile_pic')
-    date_joined= models.DateField()
+    date_joined= models.DateField(auto_now_add=True)
     
     # def __str__(self):
     #     return self.user
@@ -17,10 +18,11 @@ class Profile(models.Model):
 
 class Instagram_post(models.Model):
     title =models.CharField(max_length=200, null=False)
-    caption= models.CharField(max_length=500, null=True)
+    caption= models.TextField(max_length=500, null=True)
     creator= models.ForeignKey(User, on_delete=models.CASCADE)
-    date_posted= models.DateField()
+    date_posted= models.DateField(auto_now_add=True)
     profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE)
+    image = CloudinaryField('image', blank=True)
     
     def __str__(self):
         return self.title
