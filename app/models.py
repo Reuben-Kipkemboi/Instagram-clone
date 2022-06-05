@@ -1,5 +1,4 @@
 #imports
-from email.mime import image
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
@@ -23,9 +22,18 @@ class Instagram_post(models.Model):
     date_posted= models.DateField(auto_now_add=True)
     # profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE)
     image = CloudinaryField('image', blank=True)
+    # likes = models.ForeignKey(User_likes, on_delete=CASCADE)
     
     def __str__(self):
         return self.title
+    
+    def save_post(self):
+        self.save()
+        
+    def delete_post(self):
+        self.delete()
+        
+    
     
 
 

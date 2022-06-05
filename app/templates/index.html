@@ -27,59 +27,75 @@
       </div>
     </div>
   </div>
-
   <div class="row">
-    <!-- Button trigger modal -->
-    {% for image in images %}
-    <div class="col-md-4">
-      <a href="{{ image.id }}" data-toggle="modal" data-target="#exampleModal{{image.id}}"
-        data-target="#staticBackdrop">
-        <div class="card" style="width: 18rem;">
-          <img src="{{image.image.url}}" class="card-img-top" alt="Image">
-        </div>
-    </div></a>
-    {% empty %}
-    <div class="row">
-      <h2 class="text-center">No Images</h2>
+  <div class="col-md-6">
+    <h4>suggestions for you</h4>
+    {% for user in users %}
+    <div class="card"id ="user">
+      <p class="users">{{user.username}}</p>
+
     </div>
     {% endfor %}
-
-    {% for image in images %}
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content" id="body">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{image.title}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  </div>
+  <div class="col-md-6">
+    <!-- <div class="row"> -->
+      <!-- Button trigger modal -->
+      {% for image in images %}
+      <div class="col-md-12 mb-3">
+        <a href="{{ image.id }}" data-toggle="modal" data-target="#exampleModal{{image.id}}"
+          data-target="#staticBackdrop">
+          <div class="card">
+            <img src="{{image.image.url}}" class="card-img-top" alt="Image">
           </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="{{image.image.url}}" alt="user Image" class="image-user">
-              </div>
-              <div class="col-md-6">
-                <span id="name">{{user.username}}</span>
-                <p id="caption">{{image.caption}}</p>
-                <p id="date">Edited:{{image.date_posted}}</p>
-                <section id="comments-section">
-                  <i class="fa-solid fa-heart"></i>
-                  <i class="fa-solid fa-comments"></i>
-
-                </section>
-
+          
+      </div></a>
+      {% empty %}
+      <div class="row">
+        <h2 class="text-center">No Images</h2>
+      </div>
+      {% endfor %}
+  
+      {% for image in images %}
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" id="body">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{image.title}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="{{image.image.url}}" alt="user Image" class="image-user">
+                </div>
+                <div class="col-md-6">
+                  <span id="name">{{user.username}}</span>
+                  <p id="caption">{{image.caption}}</p>
+                  <p id="date">Edited:{{image.date_posted}}</p>
+                  <section id="comments-section">
+                    <i class="fa-solid fa-heart"></i>
+                    <i class="fa-solid fa-comments"></i>
+  
+                  </section>
+  
+                </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
-    {% endblock content %}
+  
+      {% endfor %}
+    <!-- </div> -->
+  </div>
+</div>
+  
+  {% endblock content %}
