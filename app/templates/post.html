@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% load bootstrap4 %}
-
+{% load static %}
 {% block content %}
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -16,7 +16,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="background-color: #fafafa;">
             <form action="{%url 'new_post'%}" method="post" enctype="multipart/form-data">
                 {%csrf_token%}
     

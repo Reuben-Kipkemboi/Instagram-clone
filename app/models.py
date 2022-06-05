@@ -72,8 +72,19 @@ class Instagram_post(models.Model):
 
     
 class User_likes(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Instagram_post, on_delete=models.CASCADE)
+    person_liking = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Instagram_post,related_name='likes_count', on_delete=models.CASCADE)
+    
+    
+    def save_user_likes(self):
+        self.save()
+        
+    def delete_user_likes(self):
+        self.delete()
+        
+        
+    def number_of_user_likes(self):
+        return self.likes.count()
     
     
 class User_comment(models.Model):
@@ -84,6 +95,11 @@ class User_comment(models.Model):
     def __str__(self):
         return self.content
     
+    def save_user_comments(self):
+        self.save()
+        
+    def delete_user_comments(self):
+        self.delete()
     
 
 

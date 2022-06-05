@@ -1,4 +1,4 @@
-from django.shortcuts import render ,redirect 
+from django.shortcuts import get_object_or_404, render ,redirect 
 from . forms import NewPostForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
@@ -12,8 +12,9 @@ def app_home(request):
     form=NewPostForm
     images = Instagram_post.objects.all()
     users = User.objects.all()
+    likes = User_likes.objects.all()
     
-    return render(request, 'index.html', {'form':form, 'images':images, 'users':users})
+    return render(request, 'index.html', {'form':form, 'images':images, 'users':users, 'likes':likes})
 
 #Register function
 def register(request):
@@ -97,3 +98,23 @@ def search(request):
         message = "seems you have not provided a search input"
         return render(request, 'search.html',{"message":message})
     
+    
+def like_post(request, post_id):
+    post = get_object_or_404(Instagram_post,id = post_id)
+    #basically get_object or 404 looks for that post if it exists get the object if not return a 404.
+    user_like = User_likes.objects.filter(post=post, person_liking = request.user).first()
+    #checks to validate the post and user
+    
+    #check if there is an existing like or not
+    if user_like is None:
+        #if the user has not liked
+        user_like=User_likes()
+        user_like.post=post
+        user_like.person_liking = request.user
+        #save the user like by calling tha save method
+        user_like.save_user_likes()
+        # print(User_likes.number_of_user_likes())
+    else:
+        user_like.delete_user_likes()
+    #after wards
+    return redirect('home')
