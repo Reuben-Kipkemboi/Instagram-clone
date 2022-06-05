@@ -4,12 +4,15 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from . models import Instagram_post, User_comment, User_likes, Profile
 
 
 # Create your views here.
 def app_home(request):
     form=NewPostForm
-    return render(request, 'index.html', {'form':form,})
+    images = Instagram_post.objects.all()
+    
+    return render(request, 'index.html', {'form':form, 'images':images})
 
 #Register function
 def register(request):

@@ -21,7 +21,7 @@ class Instagram_post(models.Model):
     caption= models.TextField(max_length=500, null=True)
     creator= models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted= models.DateField(auto_now_add=True)
-    profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE)
+    # profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE)
     image = CloudinaryField('image', blank=True)
     
     def __str__(self):
