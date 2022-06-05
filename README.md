@@ -30,7 +30,7 @@ User Can :-
 
 Registration
 
-![Registration](./appgallery/static/images/registration.png)
+![Registration](./appgallery/static/images/register.png)
 
 Login
 
