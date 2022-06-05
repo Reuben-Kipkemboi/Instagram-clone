@@ -33,6 +33,11 @@ class Instagram_post(models.Model):
     def delete_post(self):
         self.delete()
         
+    @classmethod
+    def search_post(cls, search_term):
+        posts = cls.objects.filter(title__icontains=search_term).all()
+        return posts
+        
     
     
 

@@ -79,4 +79,20 @@ def new_post(request):
 
 def user_profile(request):
     return render (request, 'profile.html')
+
+def search(request):
+    profiles=Profile.objects.all()
+    posts=Instagram_post.objects.all()
+    if 'search' in request.GET and request.GET["search"]:
+        term_of_search = request.GET.get("search")
+        searched_posts = Instagram_post.search_post(term_of_search)
+        print("*--*--*--*--*--*--*--*--*--*--*--*--*")
+        print(searched_posts)
+        message = f"{term_of_search}"
+
+        return render(request, 'search.html',{"message":message,"posts": searched_posts, 'profiles':profiles, 'posts':posts})
+
+    else:
+        message = "seems you have not provided a search input"
+        return render(request, 'search.html',{"message":message})
     
