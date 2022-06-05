@@ -109,3 +109,15 @@ body{
 .container{
     background-color: #fafafa;
 }
+#user-user{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+#card-outline{
+    outline: none;
+    border: none;
+}
+#center{
+    align-items: center;
+}

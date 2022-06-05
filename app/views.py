@@ -148,3 +148,7 @@ def like_post(request, post_id):
     #after wards
     return redirect('home')
 
+def comment(request):
+    pass
+
+    
