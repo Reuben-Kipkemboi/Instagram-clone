@@ -30,15 +30,15 @@ User Can :-
 
 Registration
 
-![Registration](./appgallery/static/images/register.png)
+![Registration](./app/static/images/register.png)
 
 Login
 
-![Login](./appgallery/static/images/login.png)
+![Login](./app/static/images/login.png)
 
 Create Post
 
-![create post ](./appgallery/static/images/create.png)
+![create post ](./app/static/images/create.png)
 
 
 ## Behaviour Driven Development
