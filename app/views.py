@@ -90,7 +90,7 @@ def search(request):
         print(searched_posts)
         message = f"{term_of_search}"
 
-        return render(request, 'search.html',{"message":message,"posts": searched_posts, 'profiles':profiles, 'posts':posts})
+        return render(request, 'search.html',{"message":message,"posts": searched_posts, 'profiles':profiles,})
 
     else:
         message = "seems you have not provided a search input"
