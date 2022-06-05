@@ -97,3 +97,15 @@ body{
     font-weight: bold;
     
 }
+#my-mages{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+#update{
+    
+    float: right;
+}
+.container{
+    background-color: #fafafa;
+}

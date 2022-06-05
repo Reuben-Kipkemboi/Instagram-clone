@@ -18,17 +18,17 @@ class Profile(models.Model):
     def save_user_profile(self):
         self.save()
         
-    @receiver(post_save, sender=User)
-    def create_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
+#     @receiver(post_save, sender=User)
+#     def create_profile(sender, instance, created, **kwargs):
+#         if created:
+#             Profile.objects.create(user=instance)
         
-# # A profile is creted everytime a user is created
-# #User is the sender which is responsible for making the notification.
+# # # A profile is creted everytime a user is created
+# # #User is the sender which is responsible for making the notification.
 
-    @receiver(post_save, sender=User)
-    def save_profile(sender, instance, **kwargs):
-        instance.profile.save()
+#     @receiver(post_save, sender=User)
+#     def save_profile(sender, instance, **kwargs):
+#         instance.profile.save()
     
     def delete_profile(self):
         self.save() 
@@ -46,7 +46,7 @@ class Profile(models.Model):
 class Instagram_post(models.Model):
     title =models.CharField(max_length=200, null=False)
     caption= models.TextField(max_length=500, null=True)
-    creator= models.ForeignKey(User, on_delete=models.CASCADE)
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted= models.DateField(auto_now_add=True)
     # profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE)
     image = CloudinaryField('image', blank=True)
@@ -66,11 +66,6 @@ class Instagram_post(models.Model):
         posts = cls.objects.filter(title__icontains=search_term).all()
         return posts
         
-    
-    
-
-
-    
 class User_likes(models.Model):
     person_liking = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Instagram_post,related_name='likes_count', on_delete=models.CASCADE)
@@ -91,6 +86,7 @@ class User_comment(models.Model):
     content = models.TextField( null=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Instagram_post, on_delete=models.CASCADE)
+    
     
     def __str__(self):
         return self.content

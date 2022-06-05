@@ -1,20 +1,34 @@
 from django.shortcuts import get_object_or_404, render ,redirect 
-from . forms import NewPostForm
+from . forms import NewPostForm, CommentsForm,ProfileUpdateForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from . models import Instagram_post, User_comment, User_likes, Profile,User
-
-
 # Create your views here.
 def app_home(request):
-    form=NewPostForm
+    form_one=NewPostForm
+    form_two = CommentsForm
     images = Instagram_post.objects.all()
     users = User.objects.all()
     likes = User_likes.objects.all()
     
-    return render(request, 'index.html', {'form':form, 'images':images, 'users':users, 'likes':likes})
+    # single_post = get_object_or_404(Instagram_post, id=image_id)
+    # user_comments= User_comment.objects.filter(single_post= single_post).all()
+    # current_user = request.user
+    # if request.method =='POST':
+    #     form_two = CommentsForm(request.POST)
+    #     if form_two.is_valid():
+    #         content =form_two.save(commit=False)
+    #         content.user.user=current_user
+                
+    #         content.image =single_post
+    #         content.save()
+    #     return redirect('home')
+    # else:
+    #     form_two =CommentsForm()
+    
+    return render(request, 'index.html', {'form_one':form_one, 'images':images, 'users':users, 'likes':likes, 'form_two':form_two})
 
 #Register function
 def register(request):
@@ -79,7 +93,22 @@ def new_post(request):
 #----The connection between the senders and the receivers is done through “signal dispatchers”.
 
 def user_profile(request):
-    return render (request, 'profile.html')
+    current_user = request.user
+    my_images = Instagram_post.objects.filter(user=current_user)
+    print(my_images)
+    return render (request, 'profile.html', {'images':my_images})
+
+
+
+def update_profile(request):
+    if request.method == 'POST':
+        userprofileform = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        if  userprofileform.is_valid():
+            userprofileform.save()
+            return redirect(to='profile')
+    else:
+        form_three=ProfileUpdateForm(instance =request.user.profile)
+    return render(request,'update_profile.html',{'form':form_three})
 
 def search(request):
     profiles=Profile.objects.all()
@@ -118,3 +147,4 @@ def like_post(request, post_id):
         user_like.delete_user_likes()
     #after wards
     return redirect('home')
+

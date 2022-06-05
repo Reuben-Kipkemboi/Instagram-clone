@@ -16,16 +16,19 @@ class RegisterForm(UserCreationForm):
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Instagram_post
-        exclude = ['creator', 'date_posted', 'profile_of_creator']
+        exclude = ['user', 'date_posted', 'profile_of_creator']
         
-#user profile        
-
-class UpdateProfileForm(forms.ModelForm):
-    avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
-    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
-
+#update user profile via the profile update form       
+class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio']
+        exclude = ['date_joined']
+
+
+class CommentsForm(forms.ModelForm):
+     class Meta:
+        model = User_comment
+        exclude = ['author', 'post']
+    
         
      
