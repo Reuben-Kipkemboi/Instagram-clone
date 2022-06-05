@@ -48,9 +48,8 @@ class Instagram_post(models.Model):
     caption= models.TextField(max_length=500, null=True)
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted= models.DateField(auto_now_add=True)
-    profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    # profile_of_creator= models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     image = CloudinaryField('image', blank=True)
-    # likes = models.ForeignKey(User_likes, on_delete=CASCADE)
     
     def __str__(self):
         return self.title
@@ -96,6 +95,11 @@ class User_comment(models.Model):
         
     def delete_user_comments(self):
         self.delete()
+        
+#a class to save our registered users to send mail     
+class NewsLetterRecipients(models.Model):
+    user = models.CharField(max_length = 30)
+    email = models.EmailField()
     
 
 

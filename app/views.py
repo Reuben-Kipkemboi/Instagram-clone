@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from . models import Instagram_post, User_comment, User_likes, Profile,User
+from . models import Instagram_post, User_comment, User_likes, Profile,User, NewsLetterRecipients
+from .email import send_welcome_email
 # Create your views here.
 def app_home(request):
     form_one=NewPostForm
@@ -42,6 +43,10 @@ def register(request):
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
+                email = form.cleaned_data.get('email')
+                recipient = NewsLetterRecipients(user = user,email =email)
+                recipient.save()
+                send_welcome_email(user,email)
                 messages.success(request, "account created for" + user )
                 return redirect('login')
             
