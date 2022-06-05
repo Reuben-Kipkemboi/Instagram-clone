@@ -3,24 +3,37 @@
 <div class="container">
 
     <div class="row">
-        {% if posts%}
-        <h2>Found {{ posts|length }} of searched post {{message}}</h2>
-        {% else %}
-        <h2> Found 0 Instagram Posts for the search term {{message}}</h2>
-        {% endif %}
+        <div class="col-md-6">
+            {% if posts%}
+            <p>Found {{ posts|length }} of searched post {{message}}</p>
+            {% else %}
+            <p> Found 0 Instagram Posts for the search term {{message}}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            {% if users %}
+            <i>Found {{ users|length }}Instagram users of searched profiles {{message}}</i>
+            {% else %}
+            <i> Found 0 Instagram users for the search profile {{message}}</i>
+            {% endif %}
+        </div>
+
 
     </div>
 
     <div class="row">
-
-        {% if posts %}
-        {% for post in posts %}
-        <div class="col-sm-6 col-md-3">
-            <h1>{{post.title}}</h1>
-            <img src="{{post.image.url}}" alt="">
+        <div class="col-md-6">
+            {% if posts %}
+            {% for post in posts %}
+            <div class="col-sm-6 col-md-3">
+                <h1>{{post.title}}</h1>
+                <img src="{{post.image.url}}" alt="searched image" style="width: 100%;">
+            </div>
+            {% endfor %}
+            {% endif %}
         </div>
-        {% endfor %}
-        {% endif %}
+
+        
     </div>
 </div>
 {% endblock %}

@@ -2,6 +2,10 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+#post_save is the signal that is sent at the end of the save method.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 
 #APPLICATION MODELS
@@ -11,10 +15,34 @@ class Profile(models.Model):
     image = CloudinaryField('profile_pic')
     date_joined= models.DateField(auto_now_add=True)
     
+    def save_user_profile(self):
+        self.save()
+        
+    @receiver(post_save, sender=User)
+    def create_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+        
+# # A profile is creted everytime a user is created
+# #User is the sender which is responsible for making the notification.
+
+    @receiver(post_save, sender=User)
+    def save_profile(sender, instance, **kwargs):
+        instance.profile.save()
+    
+    def delete_profile(self):
+        self.save() 
+        
+       
     def __str__(self):
         return self.user.username
     
-
+    @classmethod
+    def search_profiles(cls, search_term):
+        profiles = cls.objects.filter(user__username__icontains=search_term).all()
+        return profiles
+    
+#Class Instagram posts ---simply posts 
 class Instagram_post(models.Model):
     title =models.CharField(max_length=200, null=False)
     caption= models.TextField(max_length=500, null=True)
