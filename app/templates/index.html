@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div class="container mt-2">
+<div class="container-fluid mt-2" id="welcome">
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -29,26 +29,8 @@
 
   <!-- main Page content -->
   <div class="row">
-    <div class="col-md-4 position-fixed">
-      <h5>suggestions for you</h5>
-      {% for user in users %}
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <span class="users">{{user.username}}</span>
-
-        </div>
-        <div class="col-md-6">
-          <button type="button" class="btn btn-primary btn-sm float-md-right">Follow</button>
-
-        </div>
-
-
-      </div>
-      {% endfor %}
-    </div>
-
-
-    <div class="col-md-6 offset-6">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
       <!-- <div class="row"> -->
       <!-- Button trigger modal -->
       {% for image in images %}
@@ -118,12 +100,9 @@
                   <section id="comments-section">
                     <a href="post/{{image.id}}/like"><i
                         class="fa-solid fa-heart text-danger"></i></a>Likes:{{image.likes_count.count}}
-
-
-                    <a href="comment/{{image.id}}/comment"><i class="fa-solid fa-comments text-info"></i>Comment</a>
+                    <a href="comment/{{image.id}}/comment"><i class="fa-solid fa-comments text-info "></i>Comment</a>
 
                   </section>
-
                 </div>
               </div>
             </div>
@@ -136,6 +115,23 @@
 
       {% endfor %}
       <!-- </div> -->
+    </div>
+    <div class="col-md-4 position-fixed offset-8">
+      <h5>suggestions for you</h5>
+      {% for user in users %}
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <a href="{% url 'user.profile'%}"><span class="users">{{user.username}}</span></a>
+
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-primary btn-sm float-md-right">Follow</button>
+
+        </div>
+
+
+      </div>
+      {% endfor %}
     </div>
   </div>
 

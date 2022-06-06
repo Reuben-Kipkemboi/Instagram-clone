@@ -169,6 +169,18 @@ def comment(request, post_id):
     else:
         form_four = CommentsForm()
         return render(request, 'comment.html',{'form_four':form_four,'comments':comments})
-    pass
+    
+    
+# # if request.method=='POST':
+#         user=request.user
+#         new_follow=User.objects.get(id=user_id)
+#         if user.profile.following.contains(new_follow):
+#             user.profile.following.remove(new_follow)  
+#         else:
+#             user.profile.following.add(new_follow)
+#         if new_follow.profile.followers.contains(user):
+#             new_follow.profile.followers.remove(user)
+#         else:
+#             new_follow.profile.followers.add(user)
 
     
