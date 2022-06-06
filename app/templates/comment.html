@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% bootstrap_form form_four %}
+                <input type="submit" class="btn btn-primary btn-sm" value="Comment">
+            </form>
+            <hr>
+            {% for comment in comments %}
+                  {% if comment.image_id == post.id%}
+                  <b>{{comment.user}}:</b>
+                  <br> 
+                  <p>{{comment.content}}</p>
+                  <small>{{comment.commented_at | timesince}}</small>
+                  <hr>
+                  {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

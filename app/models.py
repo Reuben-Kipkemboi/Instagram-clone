@@ -83,8 +83,9 @@ class User_likes(models.Model):
     
 class User_comment(models.Model):
     content = models.TextField( null=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Instagram_post, on_delete=models.CASCADE)
+    commented_at= models.DateField(auto_now_add=True)
     
     
     def __str__(self):

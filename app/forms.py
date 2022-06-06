@@ -28,7 +28,7 @@ class ProfileUpdateForm(forms.ModelForm):
 class CommentsForm(forms.ModelForm):
      class Meta:
         model = User_comment
-        exclude = ['author', 'post']
+        exclude = ['user', 'post']
     
         
      

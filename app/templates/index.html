@@ -29,46 +29,45 @@
 
   <!-- main Page content -->
   <div class="row">
-  <div class="col-md-4 position-fixed">
-    <h4>suggestions for you</h4>
-    {% for user in users %}
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <span class="users">{{user.username}}</span>
+    <div class="col-md-4 position-fixed">
+      <h4>suggestions for you</h4>
+      {% for user in users %}
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <span class="users">{{user.username}}</span>
+
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-primary btn-sm float-md-right">Follow</button>
+
+        </div>
+
 
       </div>
-      <div class="col-md-6">
-        <button type="button" class="btn btn-primary btn-sm float-md-right">Follow</button>
-
-      </div>
-      
-
+      {% endfor %}
     </div>
-    {% endfor %}
 
-      
-    
-    
-  </div>
-  <div class="col-md-6 offset-6">
-    <!-- <div class="row"> -->
+
+    <div class="col-md-6 offset-6">
+      <!-- <div class="row"> -->
       <!-- Button trigger modal -->
       {% for image in images %}
       <div class="col-md-12 mb-3 text-center" id="center">
-        
+
         <a href="{{ image.id }}" data-toggle="modal" data-target="#exampleModal{{image.id}}"
           data-target="#staticBackdrop">
           <div class="card" id="card-outline">
             <img src="{{image.image.url}}" alt="Image" id="user-user">
-          </div></a>
-          
+          </div>
+        </a>
+
       </div>
       {% empty %}
       <div class="row">
         <h2 class="text-center">No Images</h2>
       </div>
       {% endfor %}
-  
+
       {% for image in images %}
       <!-- Modal -->
       <div class="modal fade" id="exampleModal{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -90,10 +89,23 @@
                   <span id="name">{{user.username}}</span>
                   <p id="caption">{{image.caption}}</p>
                   <p id="date">Edited:{{image.date_posted}}</p>
+                  <hr>
+                  {% for comment in comments %}
+                  <!-- {% if comment.image_id == post.id%} -->
+                  <p><strong>{{comment.user}}:</strong> {{comment.comment}}</p>
+                  <p>{{comment.commented_at | timesince}}</p>
+                  <hr>
+                  <!-- {% endif %} -->
+                  {% endfor %}
                   <section id="comments-section">
-                    <a href="post/{{image.id}}/like"><i class="fa-solid fa-heart"></i></a>Likes:{{image.likes_count.count}}
+                    <a href="post/{{image.id}}/like"><i
+                        class="fa-solid fa-heart"></i></a>Likes:{{image.likes_count.count}}
+
+
+                    <a href="comment/{{image.id}}/comment"><i class="fa-solid fa-comments"></i>Comment</a>
+
                   </section>
-  
+
                 </div>
               </div>
             </div>
@@ -103,10 +115,10 @@
           </div>
         </div>
       </div>
-  
+
       {% endfor %}
-    <!-- </div> -->
+      <!-- </div> -->
+    </div>
   </div>
-</div>
-  
+
   {% endblock content %}

@@ -11,6 +11,6 @@ urlpatterns=[
     path('search/', views.search, name='search_results'),
     path('post/<post_id>/like',views.like_post,name='post_liked'),
     path('user/profile/update', views.update_profile, name='profile_update'),
-    path('comment/', views.comment, name='comment')
+    path('comment/<int:post_id>/comment', views.comment, name='comment')
     
 ]

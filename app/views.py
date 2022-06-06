@@ -147,13 +147,28 @@ def like_post(request, post_id):
         user_like.person_liking = request.user
         #save the user like by calling tha save method
         user_like.save_user_likes()
-        # print(User_likes.number_of_user_likes())
     else:
         user_like.delete_user_likes()
     #after wards
     return redirect('home')
 
-def comment(request):
+def comment(request, post_id):
+    current_user = request.user
+    post = Instagram_post.objects.get(id=post_id)
+    user_name = User.objects.get(username=current_user.username)
+    comments= User_comment.objects.all()
+    
+    if request.method == 'POST':
+        form_four = CommentsForm(request.POST, request.FILES)
+        if form_four.is_valid():
+            user_comment = form_four.save(commit=False)
+            user_comment.post = post
+            user_comment.user = request.user
+            user_comment.save()  
+            return redirect('home')
+    else:
+        form_four = CommentsForm()
+        return render(request, 'comment.html',{'form_four':form_four,'comments':comments})
     pass
 
     
