@@ -120,7 +120,7 @@ Open the application on your browser `127.0.0.1:8000`.
 
 ## Live Site
 
-#### 
+#### https://insta-by-reuby.herokuapp.com/
 
 
 ## Author's Info
