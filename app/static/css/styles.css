@@ -121,8 +121,15 @@ body{
     border: none;
 }
 #center{
-    align-items: center;
+    /* align-items: center; */
+    border: 1px solid #303030;
 }
 #welcome{
     background-color: #fafafa;
+}
+.icons{
+    font-size: 4vh;
+}
+#user-user{
+    width: 100%;
 }

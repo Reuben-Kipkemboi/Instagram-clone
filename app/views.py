@@ -13,23 +13,9 @@ def app_home(request):
     images = Instagram_post.objects.all()
     users = User.objects.all()
     likes = User_likes.objects.all()
+    comments= User_comment.objects.all()
     
-    # single_post = get_object_or_404(Instagram_post, id=image_id)
-    # user_comments= User_comment.objects.filter(single_post= single_post).all()
-    # current_user = request.user
-    # if request.method =='POST':
-    #     form_two = CommentsForm(request.POST)
-    #     if form_two.is_valid():
-    #         content =form_two.save(commit=False)
-    #         content.user.user=current_user
-                
-    #         content.image =single_post
-    #         content.save()
-    #     return redirect('home')
-    # else:
-    #     form_two =CommentsForm()
-    
-    return render(request, 'index.html', {'form_one':form_one, 'images':images, 'users':users, 'likes':likes, 'form_two':form_two})
+    return render(request, 'index.html', {'form_one':form_one, 'images':images, 'users':users, 'likes':likes, 'form_two':form_two, 'comments':comments})
 
 #Register function
 def register(request):

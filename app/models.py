@@ -18,17 +18,6 @@ class Profile(models.Model):
     def save_user_profile(self):
         self.save()
         
-#     @receiver(post_save, sender=User)
-#     def create_profile(sender, instance, created, **kwargs):
-#         if created:
-#             Profile.objects.create(user=instance)
-        
-# # # A profile is creted everytime a user is created
-# # #User is the sender which is responsible for making the notification.
-
-#     @receiver(post_save, sender=User)
-#     def save_profile(sender, instance, **kwargs):
-#         instance.profile.save()
     
     def delete_profile(self):
         self.save() 
