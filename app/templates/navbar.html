@@ -41,8 +41,8 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'profile'%}"><i class="fa-regular fa-circle-user"></i></a>
       </li>
-      <span class="user-icon">Hello, {{request.user}}</span>
-      <span><a class="user-icon" href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-sm">Logout</button></a></span>
+      <span class="user-icon mr-1 mt-2">Hello, {{request.user}}</span>
+      <span><a class="user-icon ml-1 mt-1" href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-sm">Logout</button></a></span>
     </ul>
 
   </div>

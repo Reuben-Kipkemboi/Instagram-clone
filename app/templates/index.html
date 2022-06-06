@@ -30,7 +30,7 @@
   <!-- main Page content -->
   <div class="row">
     <div class="col-md-4 position-fixed">
-      <h4>suggestions for you</h4>
+      <h5>suggestions for you</h5>
       {% for user in users %}
       <div class="row">
         <div class="col-md-6 mb-3">
@@ -64,7 +64,7 @@
       </div>
       {% empty %}
       <div class="row">
-        <h2 class="text-center">No Images</h2>
+        <p class="text-center">No Posts for now</p>
       </div>
       {% endfor %}
 
