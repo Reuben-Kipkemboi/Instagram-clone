@@ -133,3 +133,9 @@ body{
 #user-user{
     width: 100%;
 }
+#two{
+    margin-top: -2%;
+}
+#user-pass, #user-icon{
+    height: 78vh;
+}
