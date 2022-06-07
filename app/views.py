@@ -7,9 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from . models import Instagram_post, User_comment, User_likes, Profile,User, NewsLetterRecipients
 from .email import send_welcome_email
-# Create your views here.
 
+# Application views here.
 
+# @login_required(login_url='login')
 def app_home(request):
     current_user = request.user
     form_one=NewPostForm
@@ -18,13 +19,12 @@ def app_home(request):
     users = User.objects.all()
     likes = User_likes.objects.all()
     comments= User_comment.objects.all()
-    # profiles = Instagram_post.objects.filter(user=current_user)
-    
-    
-    return render(request, 'index.html', {'form_one':form_one, 'images':images, 'users':users, 'likes':likes, 'form_two':form_two, 'comments':comments,})
+    profiles = Profile.objects.all()
+    users = User.objects.all
+    return render(request, 'index.html', {'form_one':form_one, 'images':images, 'users':users, 'likes':likes, 'form_two':form_two, 'comments':comments,'profiles':profiles, 'users':users})
 
 #Register function
-# @login_required(login_url='login/')
+# @login_required(login_url='login')
 def register(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -46,7 +46,7 @@ def register(request):
         return render(request, 'register.html', {'form':form, 'messages':messages})
     
 #login function
-# @login_required(login_url='login/')
+# @login_required(login_url='login')
 def user_login(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -70,7 +70,7 @@ def user_logout(request):
 	logout(request)
 	return redirect('login')
 
-# @login_required(login_url='login/')
+# @login_required(login_url='login')
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
@@ -91,7 +91,7 @@ def new_post(request):
 #----Receiver: The receiver is usually a function that works on the data once it is notified of some action that has taken place for instance when a user instance is just about to be saved inside the database.
 #----The connection between the senders and the receivers is done through “signal dispatchers”.
 
-# @login_required(login_url='login/')
+# @login_required(login_url='login')
 def user_profile(request):
     current_user = request.user
     my_images = Instagram_post.objects.filter(user=current_user)
@@ -99,7 +99,7 @@ def user_profile(request):
     return render (request, 'profile.html', {'images':my_images})
 
 
-# @login_required(login_url='login/')
+@login_required(login_url='login')
 def update_profile(request):
     if request.method == 'POST':
         userprofileform = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
@@ -110,7 +110,7 @@ def update_profile(request):
         form_three=ProfileUpdateForm(instance =request.user.profile)
     return render(request,'update_profile.html',{'form':form_three})
 
-# @login_required(login_url='login/')
+# @login_required(login_url='login')
 def search(request):
     profiles=Profile.objects.all()
     posts=Instagram_post.objects.all()
@@ -130,7 +130,7 @@ def search(request):
     
    
 
-# @login_required(login_url='login/')
+# @login_required(login_url='login')
 def like_post(request, post_id):
     post = get_object_or_404(Instagram_post,id = post_id)
     #basically get_object or 404 looks for that post if it exists get the object if not return a 404.
@@ -151,6 +151,7 @@ def like_post(request, post_id):
     return redirect('home')
 
 # @login_required
+# @login_required(login_url='login')
 def comment(request, post_id):
     current_user = request.user
     post = Instagram_post.objects.get(id=post_id)
@@ -169,17 +170,5 @@ def comment(request, post_id):
         form_four = CommentsForm()
         return render(request, 'comment.html',{'form_four':form_four,'comments':comments})
     
-    
-# # if request.method=='POST':
-#         user=request.user
-#         new_follow=User.objects.get(id=user_id)
-#         if user.profile.following.contains(new_follow):
-#             user.profile.following.remove(new_follow)  
-#         else:
-#             user.profile.following.add(new_follow)
-#         if new_follow.profile.followers.contains(user):
-#             new_follow.profile.followers.remove(user)
-#         else:
-#             new_follow.profile.followers.add(user)
 
     
