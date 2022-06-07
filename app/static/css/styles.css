@@ -136,6 +136,11 @@ body{
 #two{
     margin-top: -2%;
 }
-#user-pass, #user-icon{
-    height: 78vh;
+#play, #app{
+    width: 35%;
+    height: 8vh;
+
+}
+.apps{
+    text-align: center;
 }
