@@ -117,7 +117,6 @@ def search(request):
         term_of_search = request.GET.get("search")
         users = Profile.search_profiles(term_of_search)
         searched_posts = Instagram_post.search_post(term_of_search)
-        print("*--*--*--*--*--*--*--*--*--*--*--*--*")
         print(searched_posts)
         message = f"{term_of_search}"
 
