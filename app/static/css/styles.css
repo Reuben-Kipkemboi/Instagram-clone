@@ -144,3 +144,9 @@ body{
 .apps{
     text-align: center;
 }
+#follo-people{
+    outline:none;
+    background-color: transparent;
+    color: #0798f7;
+    border: none;;
+}
