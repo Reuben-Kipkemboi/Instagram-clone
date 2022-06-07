@@ -3,39 +3,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 
 /* font-family: 'Roboto', sans-serif; */
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     /* background-color: #fafafa; */
 }
-#home{
+
+#home {
     font-size: 6vh;
     font-weight: bold;
     font-family: 'Cookie', cursive;
     color: #303030;
 
 }
-.fa-brands, .fa-solid, .fa-regular{
+
+.fa-brands,
+.fa-solid,
+.fa-regular {
     font-size: 3.5vh;
     color: #303030;
     padding: 5px;
 
 }
-body{
+
+body {
     background-color: #fafafa;
 }
-#login-heading{
+
+#login-heading {
     font-family: 'Cookie', cursive;
-    padding:4%;
+    padding: 4%;
     text-align: center;
     font-size: 7vh;
     font-weight: 900;
     color: #303030;
 
 }
-#login-btn, #register-btn{
-    background-color:#b2dffc ;
+
+#login-btn,
+#register-btn {
+    background-color: #b2dffc;
     width: 80%;
     display: block;
     margin: 0 auto;
@@ -43,25 +51,33 @@ body{
     font-weight: 700;
     margin-bottom: 3%;
 }
-#login-page, #register-page{
+
+#login-page,
+#register-page {
     background-color: #fafafa;
 }
-#login-form, #form{
+
+#login-form,
+#form {
     border: 1px solid grey;
 }
-#register-redirect, #login-redirect{
+
+#register-redirect,
+#login-redirect {
     height: 10vh;
     width: 100%;
     border: 1px solid grey;
     background-color: #fff;
     padding: 4%;
 }
-#form .desc{
+
+#form .desc {
     font-weight: bold;
     color: #303030;
     font-size: 2.5vh;
 }
-#facebook{
+
+#facebook {
     display: block;
     margin: 0 auto;
     width: 70%;
@@ -69,88 +85,122 @@ body{
     font-weight: bold;
 
 }
-#exampleModalLabel{
+
+#exampleModalLabel {
     text-align: center;
 }
-#card-title{
+
+#card-title {
     border-bottom: 2px solid #b2dffc;
 }
-.image-user{
+
+.image-user {
     width: 100%;
     height: 100%;
 }
-#body{
+
+#body {
     background-color: #fafafa;
 }
-#name{
+
+#name {
     font-weight: bold;
     font-size: 2vh;
 
 }
-#caption{
+
+#caption {
     font-size: 2.5vh;
     line-height: 1.8;
-    
+
 }
-#date{
+
+#date {
     font-style: italic;
     font-weight: bold;
     font-size: 2vh;
     color: #1e677f;
-    
+
 }
-#my-mages{
+
+#my-mages {
     height: 250px;
     width: 100%;
     object-fit: cover;
 }
-#update{
-    
+
+#update {
+
     float: right;
 }
-.container{
+
+.container {
     background-color: #fafafa;
 }
-#user-user{
+
+#user-user {
     height: 300px;
     width: 100%;
     object-fit: cover;
 }
-#card-outline{
+
+#card-outline {
     outline: none;
     border: none;
 }
-#center{
+
+#center {
     /* align-items: center; */
     border: 1px solid #303030;
 }
-#welcome{
+
+#welcome {
     background-color: #fafafa;
 }
-.icons{
+
+.icons {
     font-size: 4vh;
 }
-#user-user{
+
+#user-user {
     width: 100%;
 }
-#two{
+
+#two {
     margin-top: -2%;
 }
-#play, #app{
+
+#play,
+#app {
     width: 35%;
     height: 8vh;
 
 }
-.apps{
+
+.apps {
     text-align: center;
 }
-#follo-people{
-    outline:none;
+
+#follo-people {
+    outline: none;
     background-color: transparent;
     color: #0798f7;
-    border: none;;
+    border: none;
+    ;
 }
-#switch{
+
+#switch {
     font-weight: bold;
     color: #0798f7;
+}
+
+#fol-folower {
+    font-weight: bold;
+    color: #000
+}
+
+#fol-folower .ml-1,
+#fol-folower .ml-2 {
+    font-weight: bolder;
+    color: #000
 }
