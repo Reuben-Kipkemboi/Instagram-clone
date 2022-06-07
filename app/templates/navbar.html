@@ -38,11 +38,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/"><i class="fa-regular fa-heart"></i></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'profile'%}"><i class="fa-regular fa-circle-user"></i></a>
-      </li>
-      <span class="user-icon mr-1 mt-2">Hello, {{request.user}}</span>
-      <span><a class="user-icon ml-1 mt-1" href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-sm">Logout</button></a></span>
+      <div class="dropdown">
+        <i class="fa-regular fa-circle-user dropdown-toggle mr-1 mt-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          
+        </i>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">{{request.user}}</a>
+          <a class="dropdown-item ml-1 mt-1" href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-sm">Logout</button></a></a>
+        </div>
+      </div>
     </ul>
 
   </div>
