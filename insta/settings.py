@@ -24,6 +24,12 @@ cloudinary.config(
   api_secret = "zxr3TbjmRS2ZvPW9XT-sApQDEtA" 
 )
 
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='kipkemboireuben866@gmail.com'
+EMAIL_HOST_PASSWORD='ymcyocprizxcolyx'
+
 
 # Email configurations remember to install python-decouple
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
