@@ -60,8 +60,11 @@ body {
 #login-form,
 #form {
     border: 1px solid grey;
+    
 }
-
+#form{
+    background-color: #fff;
+}
 #register-redirect,
 #login-redirect {
     height: 10vh;
@@ -204,3 +207,6 @@ body {
     font-weight: bolder;
     color: #000
 }
+/* #bottom-container{
+    padding-left: 2%;
+} */
